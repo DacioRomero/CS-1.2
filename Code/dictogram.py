@@ -3,7 +3,7 @@
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 
 import sys
-sys.path.insert(0, 'Tweet-Generator')
+sys.path.insert(0, 'Python-Tools')
 import sample
 
 

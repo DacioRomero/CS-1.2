@@ -1,3 +1,3 @@
-[submodule "Code/Tweet-Generator"]
-	path = Code/Tweet-Generator
-	url = git@github.com:DacioRomero/Tweet-Generator.git
+[submodule "Code/Python-Tools"]
+	path = Code/Python-Tools
+	url = git@github.com:DacioRomero/Python-Tools.git
