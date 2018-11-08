@@ -1,6 +1,8 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
+sys.path.insert(0, 'Tweet-Generator')
+import sample
 
 
 class Listogram(list):
@@ -35,6 +37,14 @@ class Listogram(list):
         if index is not None:
             return self[index][1]
         return 0
+
+    def sample(self):
+        """Return random sample from Listogram"""
+        return sample.random_choice(*zip(*self))
+
+    def samples(self, k=1):
+        """Return random samples from Listogram"""
+        return sample.random_choices(*zip(*self), k=k)
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""

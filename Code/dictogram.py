@@ -2,6 +2,10 @@
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 
+import sys
+sys.path.insert(0, 'Tweet-Generator')
+import sample
+
 
 class Dictogram(dict):
     """Dictogram is a histogram implemented as a subclass of the dict type."""
@@ -33,6 +37,14 @@ class Dictogram(dict):
             return 0
 
         return self[word]
+
+    def sample(self):
+        """Return random sample from Dictogram"""
+        return sample.random_choice(*zip(*self.items()))
+
+    def samples(self, k=1):
+        """Return random samples from Dictogram"""
+        return sample.random_choices(*zip(*self.items()), k=k)
 
 
 def print_histogram(word_list):
