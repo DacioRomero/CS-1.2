@@ -69,11 +69,10 @@ class LinkedList(object):
         Running time: O(1) no loops because tail is tracked."""
         item_node = Node(item) # O(1)
 
-        if self.head is None: # O(1)
+        if self.is_empty(): # O(1)
             self.head = item_node # O(1)
-
-        # Set old tail to point to new tail
-        if self.tail is not None: # O(1)
+        else: # O(1)
+            # Set old tail to point to new tail
             self.tail.next = item_node # O(1)
 
         self.tail = item_node # O(1)
@@ -84,11 +83,10 @@ class LinkedList(object):
         Running time: O(1) no loops because head is tracked."""
         item_node = Node(item) # O(1)
 
-        if self.head is not None: # O(1)
-            item_node.next = self.head # O(1)
-
-        if self.tail is None: # O(1)
+        if self.is_empty(): # O(1)
             self.tail = item_node # O(1)
+        else: # O(1)
+            item_node.next = self.head # O(1)
 
         self.head = item_node # O(1)
 
@@ -111,7 +109,7 @@ class LinkedList(object):
             head.next matches.
         Worst case running time: O(n) loops otherwise."""
         # Skip iteration if self.head is not set
-        if not self.is_empty: # O(1)
+        if not self.is_empty(): # O(1)
             if self.head.data == item: # O(1)
                 # Reset if length is one
                 if self.head is self.tail: # O(1)
