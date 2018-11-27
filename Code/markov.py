@@ -1,6 +1,5 @@
 import random
 import sys
-sys.path.insert(0, 'Python-Tools')
 import histogram
 import sample
 from dictogram import Dictogram
