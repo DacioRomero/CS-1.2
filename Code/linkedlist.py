@@ -32,6 +32,18 @@ class LinkedList(object):
     def __repr__(self):
         """Return a string representation of this linked list."""
         return 'LinkedList({!r})'.format(self.items())
+    
+    def __iter__(self):
+        self.current = self.head
+        return self
+
+    def __next__(self):
+        if self.current is None:
+            raise StopIteration
+        else:
+            next = self.current
+            self.current = self.current.next
+            return next
 
     def items(self):
         """Return a list (dynamic array) of all items in this linked list.
