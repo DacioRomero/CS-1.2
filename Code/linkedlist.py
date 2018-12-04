@@ -121,33 +121,33 @@ class LinkedList(object):
             head.next matches.
         Worst case running time: O(n) loops otherwise."""
         # Skip iteration if self.head is not set
-        if not self.is_empty(): # O(1)
-            if self.head.data == item: # O(1)
+        if not self.is_empty():
+            if self.head.data == item:
                 # Reset if length is one
-                if self.head is self.tail: # O(1)
-                    self.head = None # O(1)
-                    self.tail = None # O(1)
+                if self.head is self.tail:
+                    self.head = None
+                    self.tail = None
                 else:
-                    self.head = self.head.next # O(1)
+                    self.head = self.head.next
 
                 return
             else:
-                node = self.head # O(1)
+                node = self.head
 
-                while node.next is not None: # O(1) or O(n) - return
+                while node.next is not None:
                     # If the node after this one matches
-                    if node.next.data == item: # O(1)
+                    if node.next.data == item:
                         # Set self.tail to node if node.next is self.tail
-                        if node.next is self.tail: # O(1)
-                            self.tail = node # O(1)
+                        if node.next is self.tail:
+                            self.tail = node
 
-                        node.next = node.next.next # O(1)
+                        node.next = node.next.next
 
-                        return # O(1)
+                        return
 
-                    node = node.next # O(1)
+                    node = node.next
 
-        raise ValueError('Item not found: {}'.format(item)) # O(1)
+        raise ValueError('Item not found: {}'.format(item))
 
 
 def test_linked_list():
