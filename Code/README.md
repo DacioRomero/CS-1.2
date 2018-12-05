@@ -1,6 +1,6 @@
 # Code
 
-This is all the source code for my answers for [@MakeSchool](https://www.makeschool.com)'s CS 1.2 Class' [Tweet Generator tutorial](http://www.make.sc/oa-tweet-generator).
+This is all the source code for my answers for [Make School](https://www.makeschool.com)'s CS 1.2 Class' [Tweet Generator tutorial](http://www.make.sc/oa-tweet-generator).
 
 Some code requires the system to be **UNIX-based** (such as MacOS) as it reads from `/usr/share/dict/words`.
 
