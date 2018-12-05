@@ -1,6 +1,6 @@
 # Code
 
-This is all the source code for my the [Tweet Generator tutorial](http://www.make.sc/oa-tweet-generator).
+This is all the source code for my answers for [@MakeSchool](https://www.makeschool.com)'s CS 1.2 Class' [Tweet Generator tutorial](http://www.make.sc/oa-tweet-generator).
 
 Some code requires the system to be **UNIX-based** (such as MacOS) as it reads from `/usr/share/dict/words`.
 
@@ -125,7 +125,9 @@ Reads from `/usr/share/dict/words` and generates a list of random words from it.
 
 Generates a list anagrams of a provided word.
 
-Run `python3 anagram.py [word]` where `[word]` is one word.
+Run `python3 anagram.py [word]`
+
+- `[word]` = a single word.
 
 ### string_reversals.py
 
