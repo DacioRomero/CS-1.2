@@ -1,12 +1,10 @@
 # Code
 
-This is all the source code for my answers for [Make School](https://www.makeschool.com)'s CS 1.2 Class' [Tweet Generator tutorial](http://www.make.sc/oa-tweet-generator).
+This is the source code resulting from [Make School](https://www.makeschool.com)'s CS 1.2 Class' [Tweet Generator tutorial](http://www.make.sc/oa-tweet-generator).
 
 Some code requires the system to be **UNIX-based** (such as MacOS) as it reads from `/usr/share/dict/words`.
 
-These will have a `*` next to their name
-
-# Tutorial Answers
+# Tutorial Results
 
 These are in reverse order to show most recent developments.
 
@@ -118,7 +116,6 @@ Run `python3 autocomplete.py [word]`.
 
 Reads from `/usr/share/dict/words` and generates a list of random words from it.
 
-
 ## 1. Let's Get Started
 
 ### anagram.py*
@@ -137,3 +134,5 @@ Reverses words or the order of words in sentences.
 ### rearrange.py
 
 Shuffles the provided list.
+
+* = requires UNIX-based system such as Ubuntu or MacOS.
