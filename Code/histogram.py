@@ -150,7 +150,7 @@ def unique_words(histogram):
 
 def main():
     '''Tests dict_generate() and unique_words().'''
-    with open('./texts/test.txt') as file:
+    with open('./texts/corpus.txt') as file:
         my_text = file.read()
 
     my_histogram = dict_generate(my_text)

@@ -22,6 +22,7 @@ class MarkovChain(dict):
             self[current].add_count(next)
 
     def walk(self, num_words=10):
+        # Get random key and destructure to correspending words
         words = [*random.choice(list(self.keys()))]
 
         for _ in range(num_words - self.order):
@@ -34,8 +35,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description='Generate a sentence based on a markov chain')
 
-    parser.add_argument('--text', '-t', metavar='T', type=str, default='corpus.txt',
-                        help='the text to read from')
+    parser.add_argument('text', type=str, help='the text to read from')
     parser.add_argument('--order', '-o', metavar='O', type=int, default=3,
                         help='the depth to parse')
     parser.add_argument('--num', '-n', metavar='N', type=int, default=10,
