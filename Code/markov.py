@@ -3,6 +3,7 @@ import sys
 import histogram
 import sample
 from dictogram import Dictogram
+from queue import Queue
 
 class MarkovChain(dict):
     def __init__(self, words, order=1):
@@ -22,12 +23,18 @@ class MarkovChain(dict):
             self[current].add_count(next)
 
     def walk(self, num_words=10):
-        # Get random key and destructure to correspending words
-        words = [*random.choice(list(self.keys()))]
+        # Get random starting point from keys
+        words = list(random.choice(list(self.keys())))
+        queue = Queue(words)
 
         for _ in range(num_words - self.order):
-            previous = tuple(words[-self.order:])
-            words.append(self[previous].sample())
+            prev_words = tuple(queue.items())
+            new_word = self[prev_words].sample()
+
+            words.append(new_word)
+            queue.enqueue(new_word)
+
+            queue.dequeue()
 
         return ' '.join(words)
 
