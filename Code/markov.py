@@ -11,6 +11,7 @@ class MarkovChain(dict):
         self.order = order
         self._generate(words)
 
+    # TODO: Use Queue
     def _generate(self, words):
         words = tuple(words)
         for i in range(len(words) - self.order):

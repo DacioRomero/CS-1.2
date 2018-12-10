@@ -3,13 +3,15 @@ from linkedlist import LinkedList
 class Queue:
     def __init__(self, items=None):
         self.linkedlist = LinkedList(items)
+
     def enqueue(self, item):
         self.linkedlist.append(item)
 
     def dequeue(self):
-        item = self.linkedlist.head.data
-        self.linkedlist.delete(item)
-        return item
+        if self.linkedlist.head is not None:
+            item = self.linkedlist.head.data
+            self.linkedlist.head = self.linkedlist.head.next
+            return item
 
     def items(self):
         return self.linkedlist.items()
