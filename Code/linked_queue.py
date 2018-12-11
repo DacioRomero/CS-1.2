@@ -1,6 +1,6 @@
 from linkedlist import LinkedList
 
-class Queue:
+class LinkedQueue:
     def __init__(self, items=None):
         self.linkedlist = LinkedList(items)
 
@@ -17,7 +17,7 @@ class Queue:
         return self.linkedlist.items()
 
 def main():
-    queue = Queue(['a', 'b', 'c'])
+    queue = LinkedQueue(['a', 'b', 'c'])
 
     print('Enqueue "d"')
     queue.enqueue('d')

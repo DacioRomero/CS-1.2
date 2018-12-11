@@ -3,7 +3,7 @@ import sys
 import sample
 import re
 from dictogram import Dictogram
-from queue import Queue
+from linked_queue import LinkedQueue
 
 class MarkovChain(dict):
     def __init__(self, words, order=1):
@@ -27,7 +27,7 @@ class MarkovChain(dict):
         # Get random starting point from keys
         starting_points = list(filter(lambda x: x[0] is None, self.keys()))
         chain = list(random.choice(starting_points))
-        queue = Queue(chain)
+        queue = LinkedQueue(chain)
 
         sentences = 0
         while sentences < num_sentences:
