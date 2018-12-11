@@ -9,7 +9,7 @@ def create_app():
         my_text = file.read()
 
     words = markov.get_words(my_text)
-    app.markov = markov.MarkovChain(words, order=2)
+    app.markov = markov.MarkovChain(words, order=3)
 
     @app.route("/")
     def root():
