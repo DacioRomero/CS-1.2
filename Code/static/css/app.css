@@ -44,10 +44,9 @@ body {
 
 #refresh {
     position: absolute;
-    bottom: 20vh;
-    size: 10em;
+    top: 50%;
+    right: 10%;
     cursor: pointer;
-    transition: rotation 0.5s ease-out;
     color: white;
 }
 
@@ -55,7 +54,8 @@ body {
     display: none;
 }
 
-.spin {
+.clicked {
+    pointer-events: none;
     animation: spin 0.5s infinite 0s;
 }
 

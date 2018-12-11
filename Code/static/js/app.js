@@ -2,16 +2,16 @@ var refreshButton = document.getElementById("refresh");
 var paragraph = document.getElementById("paragraph");
 
 function getNewParagrah() {
-    refreshButton.classList.add("spin");
+    refreshButton.classList.add("clicked");
 
     axios.get("/api")
     .then(function(result) {
         paragraph.innerHTML = result.data;
-        refreshButton.classList.remove("spin");
+        refreshButton.classList.remove("clicked");
     })
     .catch(function(error) {
         console.error(error);
-        refreshButton.classList.remove("spin");
+        refreshButton.classList.remove("clicked");
     })
 };
 
