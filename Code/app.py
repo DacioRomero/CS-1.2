@@ -1,5 +1,4 @@
 import sys
-import time
 from flask import Flask, render_template
 import markov
 
@@ -18,7 +17,6 @@ def create_app():
 
     @app.route("/api")
     def api():
-        time.sleep(1)
         return app.markov.walk(5)
 
     return app
