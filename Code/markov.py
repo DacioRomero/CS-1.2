@@ -1,7 +1,7 @@
 import random
 import sys
-import histogram
 import sample
+import re
 from dictogram import Dictogram
 from queue import Queue
 
@@ -23,21 +23,49 @@ class MarkovChain(dict):
 
             self[current].add_count(next)
 
-    def walk(self, num_words=10):
+    def walk(self, num_sentences=10):
         # Get random starting point from keys
-        words = list(random.choice(list(self.keys())))
-        queue = Queue(words)
+        starting_points = list(filter(lambda x: x[0] is None, self.keys()))
+        chain = list(random.choice(starting_points))
+        queue = Queue(chain)
 
-        for _ in range(num_words - self.order):
+        sentences = 0
+        while sentences < num_sentences:
             prev_words = tuple(queue.items())
             new_word = self[prev_words].sample()
 
-            words.append(new_word)
             queue.enqueue(new_word)
-
             queue.dequeue()
 
-        return ' '.join(words)
+            if new_word is None:
+                sentences += 1
+            else:
+                chain.append(new_word)
+
+        phrase = []
+        for segment in chain[1:]:
+            # Word
+            if re.match(r'\w+', segment) is None:
+                phrase[-1] += segment
+            else:
+                phrase.append(segment)
+
+        result = ' '.join(phrase)
+        return result
+
+def get_words(corpus):
+    '''Get words in corpus with None indicating the start and end of sentences'''
+    sentences = re.findall(r'\w.+?[.?!:]+', corpus)
+
+    segment_matcher = re.compile(r'\w+(?:-\w+|[’\']\w+)?|\S+')
+    segments = []
+    for sentence in sentences:
+        new_segments = segment_matcher.findall(sentence)
+        if new_segments is not None:
+            segments.extend(new_segments)
+            segments.append(None)
+
+    return segments
 
 def main():
     import argparse
@@ -54,7 +82,7 @@ def main():
     with open(args.text) as file:
         corpus = file.read()
 
-    words = histogram.get_words(corpus)
+    words = get_words(corpus)
     chain = MarkovChain(words, order=args.order)
 
     sentence = chain.walk(args.num)

@@ -1,19 +1,24 @@
 import sys
-from flask import Flask
-import histogram
-from listogram import Listogram
+import time
+from flask import Flask, render_template
+import markov
 
 def create_app():
     app = Flask(__name__)
 
-    with open('./texts/corpus.txt') as file:
+    with open('./texts/metro.txt') as file:
         my_text = file.read()
 
-    # app.histogram = Dictogram(histogram.get_words(my_text))
-    app.histogram = Listogram(histogram.get_words(my_text))
+    words = markov.get_words(my_text)
+    app.markov = markov.MarkovChain(words, order=2)
 
     @app.route("/")
-    def random_sentence():  #
-        return ' '.join(app.histogram.samples(25))
+    def root():
+        return render_template('app.html')
+
+    @app.route("/api")
+    def api():
+        time.sleep(1)
+        return app.markov.walk(5)
 
     return app
