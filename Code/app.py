@@ -11,6 +11,7 @@ def create_app():
 
     words = markov.get_words(my_text)
     app.markov = markov.MarkovChain(words, order=3)
+    app.rng = random.Random()
 
     @app.route("/")
     def root():
@@ -18,7 +19,7 @@ def create_app():
 
     @app.route("/api")
     def api():
-        seed = flask.request.args.get('seed') or random.randrange(sys.maxsize)
+        seed = flask.request.args.get('seed') or app.rng.randrange(sys.maxsize)
         seed = int(seed)
 
         random.seed(seed)
