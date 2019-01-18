@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import random
 import sys
 import sample
@@ -55,12 +56,14 @@ class MarkovChain(dict):
 
 def get_words(corpus):
     '''Get words in corpus with None indicating the start and end of sentences'''
-    sentences = re.findall(r'\w.+?[.?!:]+', corpus)
+    sentences = re.findall(r'\w.+?(?:[.?!]+(?!=\w)|$)', corpus)
 
-    segment_matcher = re.compile(r'\w+(?:-\w+|[’\']\w+)?|\S+')
-    segments = []
+    segment_matcher = re.compile(r'\w+(?:-\w+|[‘\']\w+)?|\S+')
+    segments = [None]
+
     for sentence in sentences:
         new_segments = segment_matcher.findall(sentence)
+
         if new_segments is not None:
             segments.extend(new_segments)
             segments.append(None)

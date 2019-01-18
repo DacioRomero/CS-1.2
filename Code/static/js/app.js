@@ -4,7 +4,6 @@ var searchParams = new URLSearchParams(window.location.search);
 
 function getNewParagrah() {
     refreshButton.classList.add("clicked");
-    setUrlParams()
 
     axios.get("/api?" + searchParams.toString())
     .then(function(result) {

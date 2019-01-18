@@ -1,7 +1,4 @@
-@font-face {
-    font-family: Aceituna;
-    src: url('/static/Aceituna.otf');
-}
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
 
 body {
     background: black;
@@ -12,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url(/static/tunnel.jpg);
+    background-image: url(https://steamuserimages-a.akamaihd.net/ugc/856104292500928031/0CD8DD58DCC6FB935B933A7F13A9F50FFF53D700/);
     background-size: cover;
     background-position: center;
     filter: blur(5px)
@@ -36,7 +33,7 @@ body {
     vertical-align: middle;
     text-align: justify;
     color: white;
-    font-family: Aceituna;
+    font-family: 'Patrick Hand SC', cursive;
     font-weight: bold;
     font-size: 48px;
     text-overflow: ellipsis;
