@@ -6,7 +6,6 @@ import markov
 import boto3
 import dotenv
 
-
 def create_app():
     app = flask.Flask(__name__)
     dotenv.load_dotenv()
@@ -15,12 +14,15 @@ def create_app():
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     S3_BUCKET = os.getenv('S3_BUCKET')
 
-    if ((AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET) is not (None, None, None)):
-        print('Reading from AWS')
+    if None not in(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET):
+        print('Attempting to read from AWS')
+
         s3 = boto3.resource('s3')
         obj = s3.Object(S3_BUCKET, 'metro.txt')
         my_text = obj.get()['Body'].read().decode('utf-8')
     else:
+        print('Attempting to read from local')
+
         with open('./texts/metro.txt') as file:
             my_text = file.read()
 
