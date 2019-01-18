@@ -1,13 +1,25 @@
+import os
 import sys
 import flask
 import random
 import markov
+import boto3
 
 def create_app():
     app = flask.Flask(__name__)
 
-    with open('./texts/metro.txt') as file:
-        my_text = file.read()
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    S3_BUCKET = os.environ.get('S3_BUCKET')
+
+    if ((AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET) is not (None, None, None)):
+        print('Reading from AWS')
+        s3 = boto3.resource('s3')
+        obj = s3.Object(S3_BUCKET, 'metro.txt')
+        my_text = obj.get()['Body'].read().decode('utf-8')
+    else:
+        with open('./texts/metro.txt') as file:
+            my_text = file.read()
 
     words = markov.get_words(my_text)
     app.markov = markov.MarkovChain(words, order=3)
